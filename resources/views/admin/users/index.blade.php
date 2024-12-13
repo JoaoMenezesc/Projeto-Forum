@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
-</head>
-<body>
-    <h1>Tabela de usuários</h1>
-    
-    
+@extends('admin.layouts.app')
+
+@section('title', 'Listagem dos usuários')
+
+@section('content')
+<h1>Tabela de usuários</h1>
+<a href="{{route('users.create')}}">Adicionar um novo usuario</a>
+
+
+<x-alert/>
+
+
 <table>
         <thead>
             <tr>
@@ -36,5 +37,4 @@
     </table>
 
     {{$users->links()}}
-</body>
-</html>
+@endsection
