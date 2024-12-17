@@ -16,7 +16,6 @@
     </div>
 @endif
 
-
 @if ($errors->any())
 <ul>
     @foreach ($errors->any() as $error)
