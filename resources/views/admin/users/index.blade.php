@@ -4,8 +4,7 @@
 
 @section('content')
 <h1>Tabela de usuários</h1>
-<a href="{{route('users.create')}}">Adicionar um novo usuario</a>
-
+<a href="{{route('users.create')}}">Novo usuário</a>
 
 <x-alert/>
 
@@ -23,7 +22,8 @@
             <tr>
                 <td>{{  $user->name  }}</td>
                 <td>{{  $user->email  }}</td>
-                <td>-</td>
+                <td><a href="{{route('users.edit', $user->id)}}">Editar</a>
+                <a href="{{route('users.show', $user->id)}}">Visualizar</a></td>
             </tr>
 
             @empty
