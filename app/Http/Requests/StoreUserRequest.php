@@ -32,7 +32,7 @@ class StoreUserRequest extends FormRequest
 
             'email' => [
                 'required',
-                'email',
+                'email:rfc,dns',
                 'min:3',
                 'max:100',
                 //'unique:users,email',
