@@ -5,8 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckIfIsAdmin;
 use App\Http\Controllers\Admin\PostController;
-Route::middleware('auth')
-->prefix('admin')
+Route::prefix('admin')
 ->group(function () {
     
     Route::delete('/posts/{post}/destroy', [PostController::class, 'destroy'])->name('posts.destroy');
@@ -18,7 +17,7 @@ Route::middleware('auth')
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 
-    Route::delete("/users/{user}/destroy", [UserController::class, "destroy"])->name("users.destroy")->middleware(CheckIfIsAdmin::class);
+    Route::delete("/users/{user}/destroy", [UserController::class, "destroy"])->name("users.destroy"); 
     Route::get("/users/create", action: [UserController::class, "create"])->name("users.create");
     Route::get("/users/{user}", [UserController::class, "show"])->name("users.show");
     Route::put("/users/{user}/", [UserController::class, "update"])->name("users.update");
