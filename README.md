@@ -5,7 +5,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/JoaoMenezesc/Laravel_Projeto_CRUD.git app-laravel
+git clone https://github.com/JoaoMenezesc/Projeto-Forum.git app-laravel
 ```
 ```sh
 cd app-laravel
