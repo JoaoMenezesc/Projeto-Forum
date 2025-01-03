@@ -17,7 +17,7 @@
     </li>
 </ul>
 
-@can('isAdmin')
+@can('delete_user')
 <form action="{{ route('users.destroy', $user->id) }}" method="POST" 
       class="bg-red-50 dark:bg-red-900 p-4 rounded-lg shadow-md border border-red-200 dark:border-red-700"
       onsubmit="return confirm('Tem certeza de que deseja excluir este usuário? Essa ação não pode ser desfeita.');">

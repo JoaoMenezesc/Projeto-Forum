@@ -17,11 +17,12 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
+                    @can('user_page')
                     <!-- Users Link -->
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')" class="text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">
                         {{ __('Users') }}
                     </x-nav-link>
-
+                    @endcan
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-300">
                         {{ __('Posts') }}
                     </x-nav-link>
