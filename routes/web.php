@@ -5,8 +5,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckIfIsAdmin;
 use App\Http\Controllers\Admin\PostController;
-Route::prefix('admin')
+use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+
+Route::prefix('admin')->middleware('can:login_page')
 ->group(function () {
+    
     
     Route::delete('/posts/{post}/destroy', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/posts/{post}/show', [PostController::class, 'show'])->name('posts.show');
