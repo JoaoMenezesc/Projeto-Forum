@@ -1,5 +1,5 @@
 
-# Setup Docker Laravel 11 com PHP 8.3
+# Projeto Forum
 
 
 ### Passo a passo
@@ -50,4 +50,4 @@ php artisan migrate
 
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)
-# Laravel_Projeto_CRUD
+# Projeto-Forum
