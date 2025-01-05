@@ -31,6 +31,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'is_admin',
     ];
 
     /**
@@ -55,4 +56,8 @@ class User extends Authenticatable
 
         return $this->roles->map->abilities->flatten()->pluck('name');
     }
-}
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+}   

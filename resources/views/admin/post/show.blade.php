@@ -12,4 +12,6 @@
             <a href="{{ route('posts.index') }}" class="inline-block px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700">Voltar</a>
         </div>
     </div>
+
+    
 @endsection
