@@ -14,21 +14,15 @@ class PostController extends Controller
         // Filtragem de posts
         $query = Post::query();
 
-        // Filtrar pelo título se o filtro for preenchido
-        if ($request->filled('title')) {
-            $query->where('title', 'like', '%' . $request->input('title') . '%');
-        }
+    // Filtro pelo título
+    if ($request->has('title') && $request->title != '') {
+        $query->where('title', 'like', '%' . $request->title . '%');
+    }
 
-        // Filtrar pelo tipo de post se o filtro for preenchido
-        if ($request->filled('type')) {
-            $query->where('type', $request->input('type'));
-        }
-
-        // Apenas posts públicos ou do usuário autenticado são mostrados
-        $query->where(function ($subQuery) {
-            $subQuery->where('type', 'public')
-                ->orWhere('user_id', Auth::id());
-        });
+    // Filtro pelo tipo de post
+    if ($request->has('type') && $request->type != '') {
+        $query->where('type', $request->type); // Supondo que o campo seja 'type' com valores 'public' e 'private'
+    }
 
         // Paginação de 10 posts por página
         $posts = $query->with('comments')->orderBy('created_at', 'desc')->paginate(10);
@@ -111,7 +105,7 @@ class PostController extends Controller
 
         // Verifica se o usuário tem permissão para deletar
         if ($post->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Você não tem permissão para deletar este post.'], 403);
+            abort(403, 'Você não tem permissão para deletar este post.');
         }
 
         $post->delete();

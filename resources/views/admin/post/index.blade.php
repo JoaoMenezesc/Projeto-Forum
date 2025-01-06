@@ -5,6 +5,54 @@
 @section('content')
     <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">Listagem de Posts</h1>
 
+    <form action="{{ route('posts.index') }}" method="GET" class="mb-6 bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-md">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Campo Título -->
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Título:</label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    id="title" 
+                    value="{{ request('title') }}" 
+                    placeholder="Filtrar por título"
+                    class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+                >
+            </div>
+    
+            <!-- Campo Tipo -->
+            <div>
+                <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Tipo de Post:</label>
+                <select 
+                    name="type" 
+                    id="type" 
+                    class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+                >
+                    <option value="">Todos</option>
+                    <option value="public" {{ request('type') == 'public' ? 'selected' : '' }}>Público</option>
+                    <option value="private" {{ request('type') == 'private' ? 'selected' : '' }}>Privado</option>
+                </select>
+            </div>
+    
+            <!-- Botões -->
+            <div class="flex items-end gap-4">
+                <button 
+                    type="submit" 
+                    class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition duration-200"
+                >
+                    Filtrar
+                </button>
+                <a 
+                    href="{{ route('posts.index') }}" 
+                    class="px-6 py-3 bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-gray-300 font-semibold rounded-lg shadow-md hover:bg-gray-400 dark:hover:bg-gray-600 transition duration-200"
+                >
+                    Limpar Filtros
+                </a>
+            </div>
+        </div>
+    </form>
+    
+
     @can('create_post')
         <a href="{{ route('posts.create') }}" class="inline-block mb-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
             + Adicionar um Post
